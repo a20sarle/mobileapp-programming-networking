@@ -9,6 +9,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Scanner;
@@ -16,6 +18,7 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
+    private Mountain[] mountains;
 
     @SuppressWarnings("SameParameterValue")
     private String readFile(String fileName) {
@@ -40,5 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
         String s = readFile("mountains.json");
         Log.d("==>","The following text was found in textfile:\n\n"+s);
+
+        Gson gson=new Gson();
+        mountains=gson.fromJson(s,Mountain[].class);
+        for(int i=0; i<mountains.length; i++){
+            Log.d("MainActivity ==>","Hittade ett berg:"+i);
+        }
     }
 }
