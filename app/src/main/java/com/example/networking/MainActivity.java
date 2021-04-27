@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         Gson gson=new Gson();
         mountains=gson.fromJson(s,Mountain[].class);
         for(int i=0; i<mountains.length; i++){
-            Log.d("MainActivity ==>","Hittade ett berg:"+i);
+            /*Log.d("MainActivity ==>","Hittade ett berg:"+i);*/
+            Log.d("MainActivity ==>","Hittade ett berg:"+mountains[i].getName()+" "+mountains[i].getAuxdata().getWiki());
         }
     }
 }
