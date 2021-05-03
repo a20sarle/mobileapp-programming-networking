@@ -34,8 +34,62 @@ ListView myListView = findViewById(R.id.list_view);
 ```
 ![](assignment6-afterToast.png)
 
+Det fanns minst tre olika block med kod att använda för att få fram den önskade funktionen.
+Alla metoderna använde en for-loop och det krävs att en array deklareras för alla de olika sätten.
+Metod No.3 nedan är en blandning av lösningsmetod No.1 och No.2 där en tydligt kan se vilka delar
+som ersätter varandra i lösningsförslag No.1 respektive alternativ No.2.
+```
+/* METHOD 1 */
+try {
+    JSONArray jsonarray = new JSONArray(s);
+    for(int i = 0; i < jsonarray.length(); i++){
+        JSONObject object = jsonarray.getJSONObject(i);
+        String name = object.getString("name");
+        int height = object.getInt("size");
+        String location = object.getString("location");
+        item.add(new Mountain(name, height, location));
+        adapter.notifyDataSetChanged();
+    }
+} catch (JSONException e) {
+    Log.e("==>","E:"+e.getMessage());
+}
+```
+```
+/* METHOD 2 */
+Gson gson=new Gson();
+Mountain[] mountains;
+mountains=gson.fromJson(s,Mountain[].class);
+
+item.clear();
+for(int i=0; i <mountains.length; i++){
+    item.add(mountains[i]);
+}
+adapter.notifyDataSetChanged();
+```
+```
+/* METHOD 3 */
+try {
+    Gson gson=new Gson();
+    Mountain[] mountains;
+    mountains=gson.fromJson(s,Mountain[].class);
+    item.clear();
+    for(int i=0; i <mountains.length; i++){
+        item.add(mountains[i]);
+    }
+    adapter.notifyDataSetChanged();
+
+} catch (JsonSyntaxException e) {
+    e.printStackTrace();
+}
+```
 
 
+För att kunna hämta data från arrayen behövde en bl.a. använda getters och _private_ _member_ _variables_
+i den nya javaklassen kallad Mountain.java. En behövde också använda en JasonTask() samt ge tillgång till
+internet.
 
+
+Om en inte klickat på ett av bergen skulle toasten och meddelandet inte visas och det skulle då sett ut
+på följande vis.
 
 ![](assignment6-beforeToast.png)

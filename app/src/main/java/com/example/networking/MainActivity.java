@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -122,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             Log.d("MainActivity ==>", s);
 
-            /* METOD 1 */
 
+            /* METHOD 1 *//*
             try {
                 JSONArray jsonarray = new JSONArray(s);
                 for(int i = 0; i < jsonarray.length(); i++){
@@ -136,10 +137,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             } catch (JSONException e) {
                 Log.e("==>","E:"+e.getMessage());
-            }
+            }*/
 
-            /* METOD 2 */
-            /*
+            /* METHOD 2 *//*
             Gson gson=new Gson();
             Mountain[] mountains;
             mountains=gson.fromJson(s,Mountain[].class);
@@ -148,8 +148,23 @@ public class MainActivity extends AppCompatActivity {
             for(int i=0; i <mountains.length; i++){
                 item.add(mountains[i]);
             }
-            adapter.notifyDataSetChanged();
-            */
+            adapter.notifyDataSetChanged();*/
+
+
+            /* METHOD 3 */
+            try {
+                Gson gson=new Gson();
+                Mountain[] mountains;
+                mountains=gson.fromJson(s,Mountain[].class);
+                item.clear();
+                for(int i=0; i <mountains.length; i++){
+                    item.add(mountains[i]);
+                }
+                adapter.notifyDataSetChanged();
+
+            } catch (JsonSyntaxException e) {
+                e.printStackTrace();
+            }
 
             /*
             Gson gson=new Gson();
