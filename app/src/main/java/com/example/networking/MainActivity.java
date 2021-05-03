@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Mountain[] mountains;
     private ArrayList <Mountain> item;
+    private ArrayAdapter <Mountain> adapter;
 
     @SuppressWarnings("SameParameterValue")
     private String readFile(String fileName) {
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        item = new ArrayList<>();
+        adapter = new ArrayAdapter<Mountain>(this, R.layout.list_item_textview,R.id.list_view,item);
 
         String s = readFile("mountains.json");
         Log.d("==>","The following text was found in textfile:\n\n"+s);
