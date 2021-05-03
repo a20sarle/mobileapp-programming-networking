@@ -28,6 +28,7 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
 
     private Mountain[] mountains;
+    private ArrayList <Mountain> item;
 
     @SuppressWarnings("SameParameterValue")
     private String readFile(String fileName) {
