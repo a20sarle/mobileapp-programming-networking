@@ -16,6 +16,10 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -110,13 +114,27 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             Log.d("MainActivity ==>", s);
+            try {
+                JSONArray jsonarray = new JSONArray(s);
+                for(int i = 0; i < jsonarray.length(); i++){
+                    JSONObject object = jsonarray.getJSONObject(i);
+                    String name = object.getString("name");
+                    int height = object.getInt("size");
+                    String location = object.getString("location");
+                    item.add(new Mountain(name, height, location));
+                    adapter.notifyDataSetChanged();
+                }
+            } catch (JSONException e) {
+                Log.e("brom","E:"+e.getMessage());
+            }
 
+            /*
             Gson gson=new Gson();
             mountains=gson.fromJson(s,Mountain[].class);
             for(int i=0; i<mountains.length; i++){
-                /*Log.d("MainActivity ==>","Hittade ett berg:"+i);*/
+                /*Log.d("MainActivity ==>","Hittade ett berg:"+i);
                 Log.d("MainActivity ==>","Hittade ett berg:"+mountains[i].getName()+" "+mountains[i].getAuxdata().getWiki());
-            }
+            }*/
 
         }
     }

@@ -7,11 +7,19 @@ public class Mountain {
     private String company;
     private String location;
     private String category;
+    private int height;
+    private String description;
 
     private int size;
     private int cost;
 
     private Auxdata auxdata;
+
+    public Mountain(String name, int height, String description) {
+        this.name=name;
+        this.height=height;
+        this.description=description;
+    }
 
     public String getName() {
         return name;
