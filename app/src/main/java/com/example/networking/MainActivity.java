@@ -9,6 +9,7 @@ import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -21,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,13 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
-
-        webView = findViewById(R.id.web_view);
-        webView.setWebViewClient(new WebViewClient());
-        WebSettings webbSettings=webView.getSettings();
-        webbSettings.setJavaScriptEnabled(true);
 
         String s = readFile("mountains.json");
         Log.d("==>","The following text was found in textfile:\n\n"+s);

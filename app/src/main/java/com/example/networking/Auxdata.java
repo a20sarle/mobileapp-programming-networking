@@ -6,5 +6,5 @@ public class Auxdata {
 
     public String getWiki() {
         return wiki;
-    }
+    };
 }
