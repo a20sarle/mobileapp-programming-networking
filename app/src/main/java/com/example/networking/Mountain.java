@@ -21,11 +21,11 @@ public class Mountain {
         this.description=description;
     }
 
-    public String getName() {
-        return name;
+    public String getName(String name) {
+        return this.name;
     }
-    public int getHeight() { return height; }
-    public String getDescription() { return description; }
+    public int getHeight(String height) { return this.height; }
+    public String getDescription(String description) { return this.description; }
 
     public String getLocation() {
         return location;

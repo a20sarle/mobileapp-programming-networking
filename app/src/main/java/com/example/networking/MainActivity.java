@@ -13,6 +13,7 @@ import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -61,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                String name= item.get(position).getName("name");
+                int height = item.get(position).getHeight("height");
+                String description = item.get(position).getDescription("description");
+                String msg = name + "is about " + height + "." + description + ".";
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
             }
         });
 
