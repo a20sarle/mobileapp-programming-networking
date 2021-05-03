@@ -27,7 +27,6 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    private WebView webView;
     private Mountain[] mountains;
 
     @SuppressWarnings("SameParameterValue")
