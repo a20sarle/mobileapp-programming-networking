@@ -121,6 +121,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             Log.d("MainActivity ==>", s);
+
+            /* METOD 1 */
+
             try {
                 JSONArray jsonarray = new JSONArray(s);
                 for(int i = 0; i < jsonarray.length(); i++){
@@ -134,6 +137,19 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 Log.e("==>","E:"+e.getMessage());
             }
+
+            /* METOD 2 */
+            /*
+            Gson gson=new Gson();
+            Mountain[] mountains;
+            mountains=gson.fromJson(s,Mountain[].class);
+
+            item.clear();
+            for(int i=0; i <mountains.length; i++){
+                item.add(mountains[i]);
+            }
+            adapter.notifyDataSetChanged();
+            */
 
             /*
             Gson gson=new Gson();
