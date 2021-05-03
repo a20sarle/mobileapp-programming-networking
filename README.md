@@ -85,8 +85,30 @@ try {
 
 
 För att kunna hämta data från arrayen behövde en bl.a. använda getters och _private_ _member_ _variables_
-i den nya javaklassen kallad Mountain.java. En behövde också använda en JasonTask() samt ge tillgång till
+i den nya javaklassen kallad Mountain.java. En behövde också lägga till en JasonTask() samt ge tillgång till
 internet.
+```
+/* Example of private member variable in java class */
+private String name;
+
+/* Example of getter */
+public String getName(String name) {
+        return this.name;
+    }
+```
+```
+/* JsonTask() */
+new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
+
+/* JsonTask() used along with code handed to the students */
+private class JsonTask extends AsyncTask<String, String, String> {
+    /* more code */
+}
+```
+```
+/* Giving internet access */
+ <uses-permission android:name="android.permission.INTERNET" />
+```
 
 
 Om en inte klickat på ett av bergen skulle toasten och meddelandet inte visas och det skulle då sett ut
