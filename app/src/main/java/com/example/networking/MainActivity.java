@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 String name= item.get(position).getName("name");
                 int height = item.get(position).getHeight("height");
                 String location = item.get(position).getLocation("location");
-                String msg = name + "is about " + height + "MASL and located in" + location + ".";
+                String msg = name + " is about " + height + " MASL and located in " + location + ".";
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
