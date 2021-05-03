@@ -16,6 +16,10 @@ public class Mountain {
     public String getName() {
         return name;
     }
+    public String getLocation() {
+        return location;
+    }
+    public int getSize(){return size; }
     public Auxdata getAuxdata() {
         return auxdata;
     }
