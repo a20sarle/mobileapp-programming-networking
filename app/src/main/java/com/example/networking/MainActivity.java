@@ -34,10 +34,10 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Mountain[] mountains;
     private ArrayList <Mountain> item;
     private ArrayAdapter <Mountain> adapter;
 
+    /*
     @SuppressWarnings("SameParameterValue")
     private String readFile(String fileName) {
         try {
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("==>", "Could not read file: " + fileName);
             return null;
         }
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +70,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
         String s = readFile("mountains.json");
         Log.d("==>","The following text was found in textfile:\n\n"+s);
+        */
 
         new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
     }
@@ -130,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
             } catch (JSONException e) {
-                Log.e("brom","E:"+e.getMessage());
+                Log.e("==>","E:"+e.getMessage());
             }
 
             /*
