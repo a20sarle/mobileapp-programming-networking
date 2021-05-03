@@ -24,6 +24,9 @@ public class Mountain {
     public String getName() {
         return name;
     }
+    public int getHeight() { return height; }
+    public String getDescription() { return description; }
+
     public String getLocation() {
         return location;
     }
