@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         String s = readFile("mountains.json");
         Log.d("==>","The following text was found in textfile:\n\n"+s);
+
+        new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
     }
 
     @SuppressLint("StaticFieldLeak")
